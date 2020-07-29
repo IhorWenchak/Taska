@@ -3,8 +3,6 @@ var ctx = canvas.getContext('2d');
 var isMouseDown = false;
 var x, y, _x, _y, x_center, y_center;
 let arr = new Array();
-let mass = new Array();
-
 
 canvas.addEventListener('mouseup', function(e) { 
 	isMouseDown = false;
@@ -158,3 +156,16 @@ if (arr.length < 5) {
   ctx.stroke(circle);
   ctx.closePath();
 });
+
+
+window.addEventListener('load',function() {
+		
+		document.getElementById('clear').addEventListener('click',function() {
+			ctx.clearRect(0,0,canvas.width, canvas.height);
+			arr.length = 0;
+
+		},false);
+		
+	init();
+		
+},false);
