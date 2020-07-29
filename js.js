@@ -1,7 +1,7 @@
 var canvas = document.getElementById('c1');
 var ctx = canvas.getContext('2d');
 var isMouseDown = false;
-var x, y;
+var x, y, _x, _y, x_center, y_center;
 let arr = new Array();
 let mass = new Array();
 
@@ -57,6 +57,84 @@ canvas.addEventListener('mouseup', function(e) {
   			 ctx.stroke();
   			 ctx.closePath();
 	    }
+
+	    if (max == distance1) {
+	    	x_center = (arr[2]+arr[0])/2;
+	    	y_center = (arr[3]+arr[1])/2;
+
+	    	_x = 2*x_center - arr[4];
+	    	_y = 2*y_center - arr[5];
+
+	    	ctx.beginPath();
+  			 ctx.strokeStyle = 'blue';
+  			 ctx.lineWidth = 5;
+  			 ctx.lineCap = 'round';
+  			 ctx.moveTo(arr[2], arr[3]);
+  			 ctx.lineTo(_x, _y);
+  			 ctx.stroke();
+  			 ctx.closePath();
+
+  			 ctx.beginPath();
+  			 ctx.strokeStyle = 'blue';
+  			 ctx.lineWidth = 5;
+  			 ctx.lineCap = 'round';
+  			 ctx.moveTo(arr[0], arr[1]);
+  			 ctx.lineTo(_x, _y);
+  			 ctx.stroke();
+  			 ctx.closePath();
+	    }
+
+	    if (max == distance2) {
+	    	x_center = (arr[4]+arr[2])/2;
+	    	y_center = (arr[5]+arr[3])/2;
+
+	    	_x = 2*x_center - arr[0];
+	    	_y = 2*y_center - arr[1];
+
+	    	 ctx.beginPath();
+  			 ctx.strokeStyle = 'blue';
+  			 ctx.lineWidth = 5;
+  			 ctx.lineCap = 'round';
+  			 ctx.moveTo(arr[2], arr[3]);
+  			 ctx.lineTo(_x, _y);
+  			 ctx.stroke();
+  			 ctx.closePath();
+
+  			 ctx.beginPath();
+  			 ctx.strokeStyle = 'blue';
+  			 ctx.lineWidth = 5;
+  			 ctx.lineCap = 'round';
+  			 ctx.moveTo(arr[4], arr[5]);
+  			 ctx.lineTo(_x, _y);
+  			 ctx.stroke();
+  			 ctx.closePath();
+	    }
+
+	     if (max == distance3) {
+	     	x_center = (arr[4]+arr[0])/2;
+	    	y_center = (arr[5]+arr[1])/2;
+
+	    	_x = 2*x_center - arr[2];
+	    	_y = 2*y_center - arr[3];
+
+	    	 ctx.beginPath();
+  			 ctx.strokeStyle = 'blue';
+  			 ctx.lineWidth = 5;
+  			 ctx.lineCap = 'round';
+  			 ctx.moveTo(arr[0], arr[1]);
+  			 ctx.lineTo(_x, _y);
+  			 ctx.stroke();
+  			 ctx.closePath();
+
+  			 ctx.beginPath();
+  			 ctx.strokeStyle = 'blue';
+  			 ctx.lineWidth = 5;
+  			 ctx.lineCap = 'round';
+  			 ctx.moveTo(arr[4], arr[5]);
+  			 ctx.lineTo(_x, _y);
+  			 ctx.stroke();
+  			 ctx.closePath();
+	     }
 
 	}
 
