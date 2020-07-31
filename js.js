@@ -9,12 +9,13 @@ let arr = new Array();
 canvas.addEventListener('mouseup', function(e) { 
 	isMouseDown = false;
 
-	if (arr.length === 6) {
+	if (arr.length === 6) {	
+
 		var distance1 = Math.sqrt(Math.pow((arr[2]-arr[0]),2) + Math.pow((arr[3]-arr[1]),2));
 		var distance2 = Math.sqrt(Math.pow((arr[4]-arr[2]),2) + Math.pow((arr[5]-arr[3]),2));
 		var distance3 = Math.sqrt(Math.pow((arr[4]-arr[0]),2) + Math.pow((arr[5]-arr[1]),2));	
-	
-	    var max = distance1;
+
+		var max = distance1;
 
 	    if (distance2 > max)
 	    	max = distance2;
@@ -150,6 +151,8 @@ canvas.addEventListener('mouseup', function(e) {
   	 	  square = (arr[0] * arr[3]) + (arr[4] * arr[1]) + (arr[2] * arr[5]) - (arr[4] * arr[3]) - (arr[0] * arr[5]) - (arr[2] * arr[1]);
   	 	  radius = Math.sqrt(square/Math.PI);
 
+  	 	  document.getElementById('canvasData').value += "square=" + square + ';';
+
   	 	  var circle1 = new Path2D();
   	 	  ctx.beginPath();
   		  ctx.strokeStyle = 'yellow';
@@ -162,9 +165,12 @@ canvas.addEventListener('mouseup', function(e) {
 });
 
 canvas.addEventListener('mousedown', function(e) {
-  var circle = new Path2D();
-  x = e.offsetX;
-  y = e.offsetY;
+var circle = new Path2D();
+x = e.offsetX;
+document.getElementById('canvasData').value += "x=" + e.offsetX;
+y = e.offsetY;
+document.getElementById('canvasData').value += " y=" + e.offsetY + "; ";
+
 
 if (arr.length < 5) {
 	  arr.push(x);
@@ -179,14 +185,15 @@ if (arr.length < 5) {
 });
 
 
-window.addEventListener('load',function() {
-		
-		document.getElementById('clear').addEventListener('click',function() {
+window.addEventListener('load',function() {		
+		document.getElementById('reset').addEventListener('click',function() {
 			ctx.clearRect(0,0,canvas.width, canvas.height);
 			arr.length = 0;
+			document.getElementById('canvasData').value = "";
 
 		},false);
 		
 	init();
 		
 },false);
+
